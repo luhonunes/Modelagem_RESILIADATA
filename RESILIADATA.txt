@@ -1,0 +1,70 @@
+## Respostas do Projeto
+
+1. **Quais são as entidades necessárias?**
+
+   As entidades necessárias para o projeto são:
+
+   - Empresa Parceira
+   - Tecnologia
+   - Área
+   - Colaborador
+
+2. **Quais são os principais campos e seus respectivos tipos?**
+
+   - Empresa Parceira:
+     - CNPJ: Texto
+     - Nome: Texto
+     - Endereço: Texto
+     - Telefone: Texto
+     - E-mail: Texto
+     - Tecnologia_ID: Numérico
+
+   - Tecnologia:
+     - ID: Numérico
+     - Nome: Texto
+     - Descrição: Texto
+     - Área_ID: Numérico
+
+   - Área:
+     - ID: Numérico
+     - Nome: Texto
+     - Descrição: Texto
+     - Tecnologia_ID: Numérico
+
+   - Colaborador:
+     - CPF: Texto
+     - Nome: Texto
+     - Endereço: Texto
+     - Telefone: Texto
+     - E-mail: Texto
+     - Empresa_Parceira_CNPJ: Texto
+     - Área_ID: Numérico
+
+3. **Como essas entidades estão relacionadas?**
+
+   As relações entre as entidades são:
+
+   - Uma Empresa Parceira pode ter várias Áreas (relação 1 para N).
+   - Uma Área pode ter várias Tecnologias (relação 1 para N).
+   - Uma Tecnologia pode estar em várias Áreas (relação N para N).
+   - Um Colaborador está associado a uma única Empresa Parceira (relação 1 para 1).
+   - Um Colaborador está associado a uma única Área (relação 1 para 1).
+
+4. **Simule 2 registros para cada entidade.**
+
+- Empresa Parceira:
+  1. CNPJ: 123456789, Nome: TechSolutions, Endereço: Rua das Inovações, 123, Telefone: (11) 1234-5678, E-mail: info@techsolutions.com, Tecnologia_ID: 1
+  2. CNPJ: 987654321, Nome: DataTech, Endereço: Avenida dos Dados, 456, Telefone: (22) 9876-5432, E-mail: contact@datatech.com, Tecnologia_ID: 2
+
+- Tecnologia:
+  1. ID: 1, Nome: Phyton, Descrição: Linguagem de programação versátil e de alto nível, Área_ID: 1
+  2. ID: 2, Nome: SQL, Linguagem de consulta estruturada para bancos de dados relacionais, Área_ID: 2
+  3. ID: 3, Nome: Java, Descrição: Linguagem de programação orientada a objetos, Área_ID: 1
+
+- Área:
+  1. ID: 1, Nome: Webdev, Descrição: Desenvolvimento web e front-end, Tecnologia_ID: 1
+  2. ID: 2, Nome: Dados, Descrição: Ciência de dados e análise de informações, Tecnologia_ID: 2
+
+- Colaborador:
+  1. CPF: 11111111111, Nome: Aldo Rabelo, Endereço: Rua das Programadoras, 789, Telefone: (11) 2323-8878, E-mail: aldinholek@email.com, Empresa_Parceira_CNPJ: 123456789, Área_ID: 2
+  2. CPF: 22222222222, Nome: Mario Covas, Endereço: Avenida Fieis do Alamo, 344, Telefone: (22) 3223-9921, E-mail: covasmario@email.com, Empresa_Parceira_CNPJ: 987654321, Área_ID: 1
