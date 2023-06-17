@@ -22,7 +22,7 @@ O arquivo Excel disponível neste repositório contém a modelagem do banco de d
   - E-mail 
   - Tecnologia_ID (chave estrangeira referenciando a entidade Tecnologia)
 
-  - Tecnologia:
+- Tecnologia:
   - ID (chave primária)
   - Nome 
   - Descrição 
@@ -33,7 +33,7 @@ O arquivo Excel disponível neste repositório contém a modelagem do banco de d
   - Descrição 
   - Empresa Parceira_CNPJ (chave estrangeira referenciando a entidade Empresa Parceira)
 
-- Tecnologia_Área
+- Tecnologia_Área:
   - ID (chave primária)
   - Tecnologia_ID (chave estrangeira referenciando a entidade Tecnologia)
   - Área_ID (chave estrangeira referenciando a entidade Área)
