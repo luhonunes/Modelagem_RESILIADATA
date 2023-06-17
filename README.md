@@ -7,8 +7,8 @@ Este é um projeto de banco de dados para o sistema fictício RESILIADATA, desen
 A seguir está a modelagem conceitual e lógica do banco de dados para o sistema RESILIADATA:
 ![Modelagem do Banco de Dados](https://github.com/luhonunes/Modelagem_RESILIADATA/blob/main/RESILIADATA.jpg?raw=true)
 
-Este modelo foi criado e está disponível pelo draw.io:
-[Fluxograma](https://drive.google.com/file/d/1DKdbUYS1lByDNjKKwq4Khy24UgVRCmc6/view?usp=sharing)
+Este modelo foi criado e está disponível pelo miro.com:
+[Fluxograma](https://miro.com/app/board/uXjVM9rGgKk=/?share_link_id=967856279548)
 
 ### Entidades e Atributos
 
@@ -20,18 +20,22 @@ O arquivo Excel disponível neste repositório contém a modelagem do banco de d
   - Endereço 
   - Telefone 
   - E-mail 
-  - Área_ID (chave estrangeira referenciando a entidade Área)
+  - Tecnologia_ID (chave estrangeira referenciando a entidade Tecnologia)
+
+  - Tecnologia:
+  - ID (chave primária)
+  - Nome 
+  - Descrição 
 
 - Área:
   - ID (chave primária)
   - Nome 
   - Descrição 
-  - Tecnologia_ID (chave estrangeira referenciando a entidade Tecnologia)
+  - Empresa Parceira_CNPJ (chave estrangeira referenciando a entidade Empresa Parceira)
 
-- Tecnologia:
+- Tecnologia_Área
   - ID (chave primária)
-  - Nome 
-  - Descrição 
+  - Tecnologia_ID (chave estrangeira referenciando a entidade Tecnologia)
   - Área_ID (chave estrangeira referenciando a entidade Área)
 
 - Colaborador:
@@ -45,6 +49,7 @@ O arquivo Excel disponível neste repositório contém a modelagem do banco de d
 
 ### Relacionamentos
 
+- Uma Empresa Parceira pode utilizar muitas Tecnologias (relação um para muitos).
 - Uma Empresa Parceira pode ter muitas Áreas (relação um para muitos).
 - Uma Área pode ter muitas Tecnologias (relação um para muitos).
 - Uma Tecnologia pode estar em várias Áreas (relação muitos para muitos).
@@ -59,13 +64,19 @@ Aqui estão exemplos de registros para cada entidade:
   2. CNPJ: 987654321, Nome: DataTech, Endereço: Avenida dos Dados, 456, Telefone: (22) 9876-5432, E-mail: contact@datatech.com, Tecnologia_ID: 2
 
 - Tecnologia:
-  1. ID: 1, Nome: Phyton, Descrição: Linguagem de programação versátil e de alto nível, Área_ID: 1
-  2. ID: 2, Nome: SQL, Linguagem de consulta estruturada para bancos de dados relacionais, Área_ID: 2
-  3. ID: 3, Nome: Java, Descrição: Linguagem de programação orientada a objetos, Área_ID: 1
+  1. ID: 1, Nome: Phyton, Descrição: Linguagem de programação versátil e de alto nível
+  2. ID: 2, Nome: SQL, Linguagem de consulta estruturada para bancos de dados relacionais
+  3. ID: 3, Nome: Java, Descrição: Linguagem de programação orientada a objetos
 
 - Área:
-  1. ID: 1, Nome: Webdev, Descrição: Desenvolvimento web e front-end, Tecnologia_ID: 1
-  2. ID: 2, Nome: Dados, Descrição: Ciência de dados e análise de informações, Tecnologia_ID: 2
+  1. ID: 1, Nome: Webdev, Descrição: Desenvolvimento web e front-end, Empresa_Parceira_CNPJ: 987654321
+  2. ID: 2, Nome: Dados, Descrição: Ciência de dados e análise de informações,  Empresa_Parceira_CNPJ: 123456789
+
+- Tecnologia_Área:
+ 1. ID: 1, Tecnologia_ID: 1, Área_ID: 1
+ 2. ID: 2, Tecnologia_ID: 1, Área_ID: 2
+ 3. ID: 3, Tecnologia_ID: 2, Área_ID: 2
+ 4. ID: 4, Tecnologia_ID: 3, Área_ID: 1
 
 - Colaborador:
   1. CPF: 11111111111, Nome: Aldo Rabelo, Endereço: Rua das Programadoras, 789, Telefone: (11) 2323-8878, E-mail: aldinholek@email.com, Empresa_Parceira_CNPJ: 123456789, Área_ID: 2
