@@ -1,92 +1,35 @@
 # RESILIADATA - Projeto de Banco de Dados
 
-Este é um projeto de banco de dados para o sistema fictício RESILIADATA, desenvolvido como parte do Módulo 3 do curso Analista de Dados da Resília Educação em parceria com o Ifood - Vamo AI. O objetivo do projeto é realizar a modelagem e posteriormente criar um banco de dados para armazenar informações sobre empresas parceiras, tecnologias, áreas e colaboradores.
+Este é um projeto de banco de dados para o sistema fictício RESILIADATA, desenvolvido como parte do Módulo 3 do curso Analista de Dados da Resília Educação em parceria com o Ifood - Vamo AI. O objetivo do projeto é realizar a modelagem e posteriormente criar um banco de dados para armazenar informações sobre empresas parceiras, tecnologias, áreas e colaboradores. Algumas razões pelas quais a modelagem de banco de dados é importante: 
+- Organização e consistência dos dados;
+- Eficiência no acesso;
+- Suporte a requisitos de negócios.
 
 ## Modelagem do Banco de Dados
 
 A seguir está a modelagem conceitual e lógica do banco de dados para o sistema RESILIADATA:
 ![Modelagem do Banco de Dados](https://github.com/luhonunes/Modelagem_RESILIADATA/blob/main/RESILIADATA.jpg?raw=true)
 
+Essa é uma etapa essencial no processo de projeto de banco de dados, pois ajuda a compreender e representar a estrutura e os relacionamentos dos dados de forma clara e organizada.
+
 Este modelo foi criado e está disponível pelo miro.com:
 [Fluxograma](https://miro.com/app/board/uXjVM9rGgKk=/?share_link_id=967856279548)
 
 ### Entidades e Atributos
 
-O arquivo Excel disponível neste repositório contém a modelagem do banco de dados do sistema RESILIADATA. Ele inclui as seguintes tabelas e seus respectivos campos:
-
-- Empresa Parceira:
-  - CNPJ (chave primária)
-  - Nome 
-  - Endereço 
-  - Telefone 
-  - E-mail 
-  - Tecnologia_ID (chave estrangeira referenciando a entidade Tecnologia)
-
-- Tecnologia:
-  - ID (chave primária)
-  - Nome 
-  - Descrição 
-
-- Área:
-  - ID (chave primária)
-  - Nome 
-  - Descrição 
-  - Empresa Parceira_CNPJ (chave estrangeira referenciando a entidade Empresa Parceira)
-
-- Tecnologia_Área:
-  - ID (chave primária)
-  - Tecnologia_ID (chave estrangeira referenciando a entidade Tecnologia)
-  - Área_ID (chave estrangeira referenciando a entidade Área)
-
-- Colaborador:
-  - CPF (chave primária)
-  - Nome 
-  - Endereço 
-  - Telefone 
-  - E-mail 
-  - Empresa Parceira_CNPJ (chave estrangeira referenciando a entidade Empresa Parceira)
-  - Área_ID (chave estrangeira referenciando a entidade Área)
+O arquivo Excel disponível neste repositório contém a modelagem física do banco de dados do sistema RESILIADATA. Ele inclui as tabelas e seus respectivos campos.
+A modelagem física é a etapa final do projeto de banco de dados, onde o modelo lógico é implementado em um sistema de gerenciamento de banco de dados específico.
 
 ### Relacionamentos
 
-- Uma Empresa Parceira pode utilizar muitas Tecnologias (relação um para muitos).
-- Uma Empresa Parceira pode ter muitas Áreas (relação um para muitos).
-- Uma Área pode ter muitas Tecnologias (relação um para muitos).
-- Uma Tecnologia pode estar em várias Áreas (relação muitos para muitos).
-- Um Colaborador pode estar em apenas uma Empresa Parceira e apenas uma Área (relação um para um).
-
-## Exemplos de Registros
-
-Aqui estão exemplos de registros para cada entidade:
-
-- Empresa Parceira:
-  1. CNPJ: 123456789, Nome: TechSolutions, Endereço: Rua das Inovações, 123, Telefone: (11) 1234-5678, E-mail: info@techsolutions.com, Tecnologia_ID: 1
-  2. CNPJ: 987654321, Nome: DataTech, Endereço: Avenida dos Dados, 456, Telefone: (22) 9876-5432, E-mail: contact@datatech.com, Tecnologia_ID: 2
-
-- Tecnologia:
-  1. ID: 1, Nome: Phyton, Descrição: Linguagem de programação versátil e de alto nível
-  2. ID: 2, Nome: SQL, Linguagem de consulta estruturada para bancos de dados relacionais
-  3. ID: 3, Nome: Java, Descrição: Linguagem de programação orientada a objetos
-
-- Área:
-  1. ID: 1, Nome: Webdev, Descrição: Desenvolvimento web e front-end, Empresa_Parceira_CNPJ: 987654321
-  2. ID: 2, Nome: Dados, Descrição: Ciência de dados e análise de informações,  Empresa_Parceira_CNPJ: 123456789
-
-- Tecnologia_Área:
- 1. ID: 1, Tecnologia_ID: 1, Área_ID: 1
- 2. ID: 2, Tecnologia_ID: 1, Área_ID: 2
- 3. ID: 3, Tecnologia_ID: 2, Área_ID: 2
- 4. ID: 4, Tecnologia_ID: 3, Área_ID: 1
-
-- Colaborador:
-  1. CPF: 11111111111, Nome: Aldo Rabelo, Endereço: Rua das Programadoras, 789, Telefone: (11) 2323-8878, E-mail: aldinholek@email.com, Empresa_Parceira_CNPJ: 123456789, Área_ID: 2
-  2. CPF: 22222222222, Nome: Mario Covas, Endereço: Avenida Fieis do Alamo, 344, Telefone: (22) 3223-9921, E-mail: covasmario@email.com, Empresa_Parceira_CNPJ: 987654321, Área_ID: 1
+Em bancos de dados, a cardinalidade é uma medida fundamental para o projeto e otimização de esquemas de banco de dados. Ela descreve a relação entre duas entidades ou tabelas em um banco de dados relacional. Essa informação ajuda a definir a estrutura correta do banco de dados e as relações entre as tabelas, garantindo a integridade dos dados e a eficiência das consultas.
+A cardinalidade pode ser classificada como um-para-um, um-para-muitos, muitos-para-um ou muitos-para-muitos,dependendo da quantidade de ocorrências possíveis de cada entidade em relação à outra.  Essa informação está disponível no Arquivo RESILIDATA.txt, no formato de resposta para a pergunta '3. Como essas entidades estão relacionadas?'.
 
 ## Como Utilizar
 
 1. Faça o clone deste repositório em sua máquina local.
-2. Acesse o arquivo Excel para visualizar a modelagem do banco de dados.
-3. Analise o fluxograma para entender a estrutura do banco de dados.
+2. Acesse o arquivo Excel para visualizar a modelagem física do banco de dados.
+3. Analise o fluxograma disponível no arquivo .jpg para entender a estrutura do banco de dados com a modelagem conceitual e lógica.
 4. Utilize as informações contidas na modelagem para implementar o banco de dados no sistema.
 5. As respostas das perguntas realizadas estão disponíveis no arquivo RESILIDATA.txt.
 
