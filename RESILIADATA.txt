@@ -5,46 +5,57 @@
    As entidades necessárias para o projeto são:
 
    - Empresa Parceira
-   - Tecnologia
-   - Área
+   - Tecnologias
+   - Áreas
    - Tecnologia_Área
-   - Colaborador
+   - Empresa-Parceira_Tecnologia
+   - Empresa-Parceira_Área
+   - Colaboradores
 
 2. Quais são os principais campos e seus respectivos tipos?
 
    - Empresa Parceira:
-     - CNPJ: Texto
-     - Nome: Texto
-     - Endereço: Texto
-     - Telefone: Texto
-     - E-mail: Texto
-     - Tecnologia_ID: Numérico
+     - Registro: integer (PK)
+     - CNPJ: char (12)
+     - Nome: varchar (100)
+     - Endereço: varchar (100)
+     - Telefone: varchar (20)
+     - E-mail: varchar (50) 
 
    - Tecnologia:
-     - ID: Numérico
-     - Nome: Texto
-     - Descrição: Texto
+     - ID: integer (PK)
+     - Nome: varchar (100)
+     - Descrição: varchar (255)
     
    - Área:
-     - ID: Numérico
-     - Nome: Texto
-     - Descrição: Texto
-     - Empresa_Parceira_CNPJ: Texto
-
+     - ID: integer (PK)
+     - Nome: varchar (100)
+     - Descrição: varchar (255)
+    
    - Tecnologia_Área
-    - ID: Numérico
-    - Tecnologia_ID: Numérico
-    - Área_ID: Numérico
+    - ID: integer (PK)
+    - Tecnologia_ID: integer (FK)
+    - Área_ID: integer (FK)
+
+   - Empresa-Parceira_Tecnologia
+    - ID: integer (PK)
+    - Empresa-Parceira_Registro: integer (FK)
+    - Tecnologia_ID: integer (FK)
+
+   - Empresa-Parceira_Área
+    - ID: integer (PK)
+    - Empresa-Parceira_Registro: integer (FK)
+    - Área_ID: integer (FK)
 
    - Colaborador:
-     - CPF: Texto
-     - Nome: Texto
-     - Endereço: Texto
-     - Telefone: Texto
-     - E-mail: Texto
-     - Empresa_Parceira_CNPJ: Texto
-     - Área_ID: Numérico
-
+     - Matrícula: integer (PK)
+     - CPF: integer (PK)
+     - Nome: varchar (100)
+     - Endereço: varchar (100)
+     - Telefone: varchar (20)
+     - E-mail: varchar (50) 
+     - Empresa-Parceira_Área_ID: integer (FK)
+    
 3. Como essas entidades estão relacionadas?
 
    As relações entre as entidades são:
@@ -52,15 +63,17 @@
    - Uma Empresa Parceira pode utilizar várias Tecnologias (relação 1 para N).
    - Uma Empresa Parceira pode ter várias Áreas (relação 1 para N).
    - Uma Área pode ter várias Tecnologias (relação 1 para N).
-   - Uma Tecnologia pode estar em várias Áreas (relação N para N).
-   - Um Colaborador está associado a uma única Empresa Parceira (relação 1 para 1).
-   - Um Colaborador está associado a uma única Área (relação 1 para 1).
+   - Uma Tecnologia pode estar em várias Áreas (relação 1 para N).
+   - Várias Áreas podem estar em várias Empresas (relação N para N).
+   - Várias Tecnologias podem estar em várias Áreas (relação N para N).
+   - Um Colaborador está associado a uma única Empresa Parceira, em uma determinada Área (relação 1 para 1).
+
 
 4. Simule 2 registros para cada entidade.
 
 - Empresa Parceira:
-  1. CNPJ: 123456789, Nome: TechSolutions, Endereço: Rua das Inovações, 123, Telefone: (11) 1234-5678, E-mail: info@techsolutions.com, Tecnologia_ID: 1
-  2. CNPJ: 987654321, Nome: DataTech, Endereço: Avenida dos Dados, 456, Telefone: (22) 9876-5432, E-mail: contact@datatech.com, Tecnologia_ID: 2
+  1. Registro: 100, CNPJ: 123456789, Nome: TechSolutions, Endereço: Rua das Inovações, 123, Telefone: (11) 1234-5678, E-mail: info@techsolutions.com
+  2. Registro: 200, CNPJ: 987654321, Nome: DataTech, Endereço: Avenida dos Dados, 456, Telefone: (22) 9876-5432, E-mail: contact@datatech.com
 
 - Tecnologia:
   1. ID: 1, Nome: Phyton, Descrição: Linguagem de programação versátil e de alto nível
@@ -68,8 +81,8 @@
   3. ID: 3, Nome: Java, Descrição: Linguagem de programação orientada a objetos
 
 - Área:
-  1. ID: 1, Nome: Webdev, Descrição: Desenvolvimento web e front-end, Empresa_Parceira_CNPJ: 987654321
-  2. ID: 2, Nome: Dados, Descrição: Ciência de dados e análise de informações,  Empresa_Parceira_CNPJ: 123456789
+  1. ID: 1, Nome: Webdev, Descrição: Desenvolvimento web e front-end
+  2. ID: 2, Nome: Dados, Descrição: Ciência de dados e análise de informações
 
 - Tecnologia_Área:
  1. ID: 1, Tecnologia_ID: 1, Área_ID: 1
@@ -77,6 +90,21 @@
  3. ID: 3, Tecnologia_ID: 2, Área_ID: 2
  4. ID: 4, Tecnologia_ID: 3, Área_ID: 1
 
+- Empresa-Parceira_Tecnologia
+  1. ID: 1, Empresa-Parceira_Registro: 100, Tecnologia_ID: 1
+  2. ID: 2, Empresa-Parceira_Registro: 100, Tecnologia_ID: 2
+  3. ID: 3, Empresa-Parceira_Registro: 100, Tecnologia_ID: 3
+  4. ID: 4, Empresa-Parceira_Registro: 200, Tecnologia_ID: 1
+  5. ID: 5, Empresa-Parceira_Registro: 200, Tecnologia_ID: 2
+  6. ID: 6, Empresa-Parceira_Registro: 200, Tecnologia_ID: 3
+
+- Empresa-Parceira_Área
+  1. ID: 1, Empresa-Parceira_Registro: 100, Área_ID: 1
+  2. ID: 2, Empresa-Parceira_Registro: 100, Área_ID: 2
+  3. ID: 3, Empresa-Parceira_Registro: 200, Área_ID: 1
+  4. ID: 4, Empresa-Parceira_Registro: 200, Área_ID: 2
+
+
 - Colaborador:
-  1. CPF: 11111111111, Nome: Aldo Rabelo, Endereço: Rua das Programadoras, 789, Telefone: (11) 2323-8878, E-mail: aldinholek@email.com, Empresa_Parceira_CNPJ: 123456789, Área_ID: 2
-  2. CPF: 22222222222, Nome: Mario Covas, Endereço: Avenida Fieis do Alamo, 344, Telefone: (22) 3223-9921, E-mail: covasmario@email.com, Empresa_Parceira_CNPJ: 987654321, Área_ID: 1
+  1. Matrícula: 1001, CPF: 11111111111, Nome: Aldo Rabelo, Endereço: Rua das Programadoras, 789, Telefone: (11) 2323-8878, E-mail: aldinholek@email.com, Empresa-Parceira_Área_ID: 2
+  2. Matrícula: 1002, CPF: 22222222222, Nome: Mario Covas, Endereço: Avenida Fieis do Alamo, 344, Telefone: (22) 3223-9921, E-mail: covasmario@email.com, Empresa-Parceira_Área_ID: 3
